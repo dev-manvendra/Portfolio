@@ -1,11 +1,18 @@
-import { Routes, Route } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+import Header from './Components/Header'
+import Footer from './Components/Footer'
 
 function App() {
+  
+
   return (
-    <Routes>
-      <Route path="/" element={<div>Home</div>} />
-    </Routes>
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
   )
 }
+
 
 export default App
