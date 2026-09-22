@@ -1,1 +1,46 @@
+/* This replaces the content of your src/index.css (or whichever file has
+   the @import "tailwindcss" line — the one your main.jsx imports). */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --color-navy-deep: #0f2440;
+  --color-navy-mid: #163a5e;
+  --color-paper: #f3f6f4;
+  --color-paper-dim: #e7ece9;
+  --color-ink: #16202b;
+  --color-muted: #5b6b7a;
+  --color-line: #c7d2cf;
+  --color-line-cyan: #6fa8c9;
+  --color-signal: #e2a63b;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --max-width-page: 1080px;
+}
+
+@utility btn {
+  @apply inline-flex items-center gap-2 font-mono text-[0.85rem] px-5 py-3 rounded-sm border transition-colors;
+}
+@utility btn-primary {
+  @apply btn bg-navy-deep text-paper border-navy-deep hover:bg-navy-mid;
+}
+@utility btn-ghost {
+  @apply btn bg-transparent text-navy-deep border-navy-deep hover:bg-paper-dim;
+}
+@utility tag-chip {
+  @apply font-mono text-xs text-navy-deep border border-line bg-paper-dim px-2.5 py-1 rounded-sm;
+}
+@utility nav-link {
+  @apply font-mono text-sm text-muted pb-1 border-b-2 border-transparent hover:text-ink transition-colors;
+}
+@utility nav-link-active {
+  @apply text-navy-deep border-signal;
+}
+
+body {
+  @apply bg-paper text-ink font-body;
+}
