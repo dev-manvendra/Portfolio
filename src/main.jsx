@@ -5,6 +5,8 @@ import './index.css'
 import App from './App.jsx'
 import Profile from './Components/Profile.jsx'
 import Projects from "./Components/Projects.jsx"
+import Skills from './Components/Skills.jsx'
+import Nav from './Components/Nav.jsx'
 
 
 const router  = createBrowserRouter([
@@ -13,14 +15,14 @@ const router  = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "",
+        path: "profile",
         element: <Profile />
       },{
-        path : "/about",
+        path : "projects",
         element: <Projects />
       },{
-        path: "*",
-        element: <h1>404 - Page Not Found</h1>
+        path: "skills",
+        element: <Skills />
       }
     ]
   }
