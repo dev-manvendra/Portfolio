@@ -1,6 +1,6 @@
-// import Nav from "./Nav";
+import { useEffect, useState } from "react";
 
-// Edit these groups. "level" is 1-4 and drives the small bar next to each skill.
+// Edit these groups. "level" is 1-4 and drives the bar fill.
 const SKILLS_DATA = [
   {
     category: "Languages",
@@ -40,23 +40,35 @@ const SKILLS_DATA = [
   },
 ];
 
-function LevelBar({ level }) {
+const MONOGRAM_STYLES = [
+  "bg-navy-deep text-paper",
+  "bg-line-cyan/20 text-navy-deep",
+  "bg-signal/20 text-navy-deep",
+  "bg-paper-dim text-navy-deep",
+];
+
+function LevelBar({ level, mounted }) {
+  const pct = (level / 4) * 100;
   return (
-    <div className="flex gap-[3px]">
-      {[1, 2, 3, 4].map((i) => (
-        <span
-          key={i}
-          className={`h-1.5 w-3.5 ${i <= level ? "bg-line-cyan" : "bg-paper-dim"}`}
-        />
-      ))}
+    <div className="h-1.5 w-20 overflow-hidden bg-paper-dim">
+      <div
+        className="h-full bg-line-cyan transition-[width] duration-700 ease-out"
+        style={{ width: mounted ? `${pct}%` : "0%" }}
+      />
     </div>
   );
 }
 
 export default function Skills() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   return (
     <div className="min-h-screen bg-paper text-ink font-body">
-      {/* <Nav /> */}
 
       <main className="mx-auto max-w-page px-8 pb-24">
         <section className="pt-16">
@@ -71,19 +83,26 @@ export default function Skills() {
           </p>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-            {SKILLS_DATA.map((group) => (
+            {SKILLS_DATA.map((group, gi) => (
               <div key={group.category} className="border border-line bg-white p-6">
-                <h2 className="mb-4 border-b border-paper-dim pb-2.5 font-mono text-sm text-navy-deep">
-                  {group.category}
-                </h2>
+                <div className="mb-5 flex items-center gap-4 border-b border-paper-dim pb-4">
+                  <div
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center font-display text-lg font-semibold ${MONOGRAM_STYLES[gi % MONOGRAM_STYLES.length]}`}
+                  >
+                    {group.category.charAt(0)}
+                  </div>
+                  <h2 className="font-display text-lg font-semibold text-navy-deep">
+                    {group.category}
+                  </h2>
+                </div>
                 <ul className="m-0 flex list-none flex-col p-0">
                   {group.skills.map((skill) => (
                     <li
                       key={skill.name}
-                      className="flex items-center justify-between gap-3 py-2.5"
+                      className="flex items-center justify-between gap-4 py-2.5"
                     >
                       <span className="text-sm">{skill.name}</span>
-                      <LevelBar level={skill.level} />
+                      <LevelBar level={skill.level} mounted={mounted} />
                     </li>
                   ))}
                 </ul>
