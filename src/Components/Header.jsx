@@ -1,43 +1,43 @@
-import { NavLink } from "react-router-dom";
-export default function Header() {
-    return (
-        <header className="shadow sticky z-50 top-0">
-            <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
-                <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                    <li>
-                        <NavLink
-                        to="/"
-                            className={({isActive}) =>
-                                `block py-2 pr-4 pl-3 ${isActive? "text-orange-700":"text-gray-700"} duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                            }
-                        >
-                            Profile
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                        to="/projects"
-                            className={({isActive}) =>
-                                `block py-2 pr-4 pl-3 ${isActive? "text-orange-700":"text-gray-700"} duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                            }
-                        >
-                            Projects
-                        </NavLink>
-                    </li>   
-                    
-                    <li>
-                        <NavLink
-                        to="/skills"
-                            className={({isActive}) =>
-                                `block py-2 pr-4 pl-3 ${isActive? "text-orange-700":"text-gray-700"} duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                            }
-                        >
-                            Skills
-                        </NavLink>
-                    </li>                                 
-                </ul>    
-            </nav>
-        </header>
-    );
-}
+import { NavLink, Link } from "react-router-dom";
 
+// Edit this to your name / initials.
+const BRAND = "Manvendra";
+
+// If your routes in App.jsx use different paths, update them here to match.
+const NAV_LINKS = [
+  { to: "/", label: "Profile", end: true },
+  { to: "/projects", label: "Projects" },
+  { to: "/skills", label: "Skills" },
+];
+
+export default function Header() {
+  return (
+    <header className="sticky top-0 z-10 border-b border-line bg-paper">
+      <div className="mx-auto flex max-w-page items-center justify-between px-8 py-5">
+        <div>
+            <Link to ="/">
+                <span className="font-display text-[1.05rem] font-semibold">{BRAND}</span>
+               
+            </Link>
+         </div>
+        
+        <ul className="flex list-none  gap-7 p-0 m-0">
+          {NAV_LINKS.map((link) => (
+            <li 
+            key={link.to}>
+              <NavLink
+                to={link.to}
+                end={link.end}
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? "nav-link-active text-navy-deep font-bold" : "text-gray-500"}`
+                }
+              >
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </header>
+  );
+}
