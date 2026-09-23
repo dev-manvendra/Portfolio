@@ -6,7 +6,7 @@ import App from './App.jsx'
 import Profile from './Components/Profile.jsx'
 import Projects from "./Components/Projects.jsx"
 import Skills from './Components/Skills.jsx'
-import Nav from './Components/Nav.jsx'
+// import Nav from './Components/Nav.jsx'
 
 
 const router  = createBrowserRouter([
@@ -15,7 +15,7 @@ const router  = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "profile",
+        path: "",
         element: <Profile />
       },{
         path : "projects",
