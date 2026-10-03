@@ -6,7 +6,7 @@ const PROFILE_DATA = {
   nameLine2: "",
   role: "Backend-leaning full-stack developer",
   bio:
-    "I build things end to end — from data models and APIs to the interfaces on top of them. Currently in my final year, spending most nights on side projects and open-source issues rather than problem sets.",
+    "I build things end to end — from data models and APIs to the interfaces on top of them. Currently in my third year, spending most nights on side projects and open-source issues rather than problem sets.",
   resumeUrl: "/Resume.docx",
   email: "manvendrajhansi1406@gmail.com",
   socials : [
