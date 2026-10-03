@@ -14,12 +14,12 @@ const PROFILE_DATA = {
     { label: "LinkedIn", url: "https://www.linkedin.com/in/dev-manvendra/" },
     ],
  
-  // stats: [
-  //   { label: "LOCATION", value: "Delhi, IN" },
-  //   { label: "FOCUS", value: "Distributed systems" },
-  //   { label: "AVAILABLE", value: "Summer 2027" },
-  //   { label: "STACK", value: "TS / Go / React" },
-  // ],
+  stats: [
+    { label: "LOCATION", value: "Delhi, IN" },
+    { label: "FOCUS", value: "Distributed systems" },
+    { label: "AVAILABLE", value: "Summer 2027" },
+    { label: "STACK", value: "TS / Go / React" },
+  ],
   now: [
     {
       title: "Education",
@@ -42,7 +42,7 @@ export default function Profile() {
     resumeUrl,
     email,
     socials,
-    // stats,
+    stats,
     now,
   } = PROFILE_DATA;
 
@@ -132,7 +132,7 @@ export default function Profile() {
       </section>
 
       {/* Stat strip */}
-      {/* <section className="border-b border-line">
+      <section className="border-b border-line">
         <div className="mx-auto grid max-w-page grid-cols-2 divide-x divide-y divide-line border-t border-line md:grid-cols-4 md:divide-y-0">
           {stats.map((stat) => (
             <div key={stat.label} className="px-8 py-7">
@@ -141,7 +141,7 @@ export default function Profile() {
             </div>
           ))}
         </div>
-      </section> */}
+      </section> 
 
       <main className="mx-auto max-w-page px-8 pb-24">
         <section className="pt-20">
