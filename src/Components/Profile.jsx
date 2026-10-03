@@ -17,8 +17,8 @@ const PROFILE_DATA = {
   stats: [
     { label: "LOCATION", value: "Delhi, IN" },
     { label: "FOCUS", value: "Distributed systems" },
-    { label: "AVAILABLE", value: "Summer 2027" },
-    { label: "STACK", value: "TS / Go / React" },
+    { label: "AVAILABLE", value: "Winter 2027" },
+    { label: "STACK", value: "TS /NODE.JS / React" },
   ],
   now: [
     {
