@@ -23,11 +23,11 @@ const PROFILE_DATA = {
   now: [
     {
       title: "Education",
-      body: "B.Tech in Computer Science, Class of 2027 — coursework in systems, algorithms, and databases.",
+      body: "B.Tech in Computer Science, Class of 2028 — coursework in systems, algorithms, and databases.",
     },
     {
       title: "Currently learning",
-      body: "Distributed systems fundamentals and Go, alongside a side project on real-time data pipelines.",
+      body: "Distributed systems fundamentals, alongside a side project on real-time data pipelines.",
     },
   ],
 };
