@@ -1,5 +1,4 @@
 
-// Edit everything below — this is the only place page copy lives.
 const PROFILE_DATA = {
   eyebrow: "Software Engineering Student",
   nameLine1: "Manvendra",
@@ -18,7 +17,7 @@ const PROFILE_DATA = {
     { label: "LOCATION", value: "Delhi, IN" },
     { label: "FOCUS", value: "Distributed systems" },
     { label: "AVAILABLE", value: "Winter 2027" },
-    { label: "STACK", value: "TS /NODE.JS / React" },
+    { label: "STACK", value: "JS /NODE.JS / React" },
   ],
   now: [
     {
@@ -27,7 +26,7 @@ const PROFILE_DATA = {
     },
     {
       title: "Currently learning",
-      body: "Distributed systems fundamentals, alongside a side project on real-time data pipelines.",
+      body: "System Design with Full-Stack, alongside a side project on real-time data pipelines.",
     },
   ],
 };
