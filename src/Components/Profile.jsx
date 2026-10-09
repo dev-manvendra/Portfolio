@@ -31,6 +31,22 @@ const PROFILE_DATA = {
   ],
 };
 
+const ORIGINAL_DETAILS_CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.profile-font { font-family: 'Inter', system-ui, sans-serif; }
+.profile-display { font-family: 'Bricolage Grotesque', sans-serif; }
+.profile-mono { font-family: 'JetBrains Mono', monospace; }
+.profile-enter { animation: profile-enter .7s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes profile-enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .profile-enter { animation: none !important; }
+}
+`;
+
 export default function Profile() {
   const { eyebrow, nameLine1, nameLine2, role, bio, resumeUrl, email, socials, stats, now } =
     PROFILE_DATA;
@@ -98,24 +114,25 @@ export default function Profile() {
   let left = count;
 
   return (
-    <main className="min-h-screen bg-[#0e1124] font-sans leading-[1.6] text-[#e9ebfa]">
+    <main className="profile-font min-h-screen bg-[#0e1124] leading-[1.6] text-[#e9ebfa]">
+      <style>{ORIGINAL_DETAILS_CSS}</style>
       <section className="px-0 pb-12 pt-14 md:pb-[72px] md:pt-24">
         <div className="mx-auto grid max-w-[1120px] grid-cols-1 items-center gap-10 px-6 md:grid-cols-[1.1fr_1fr] md:gap-14">
           <div>
-            <p className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-[#272c4f] px-3.5 py-1.5 font-mono text-[13px] text-[#6ee7c8]">
+            <p className="profile-enter profile-mono mb-7 inline-flex items-center gap-2.5 rounded-full border border-[#272c4f] px-3.5 py-1.5 font-mono text-[13px] text-[#6ee7c8]">
               <span className="h-2 w-2 animate-pulse rounded-full bg-[#6ee7c8]" />
               {eyebrow}
             </p>
 
-            <h1 className="mb-5 text-[clamp(3rem,8vw,5.75rem)] font-extrabold leading-[0.98] tracking-[-0.03em]">
+            <h1 className="profile-enter profile-display mb-5 text-[clamp(3rem,8vw,5.75rem)] font-extrabold leading-[0.98] tracking-[-0.03em]">
               <span className="block">{nameLine1}</span>
               {nameLine2 && <span className="block text-[#8b9bff]">{nameLine2}</span>}
             </h1>
 
-            <p className="mb-4 text-[1.4rem] font-medium text-[#8b9bff]">{role}</p>
-            <p className="mb-8 max-w-[54ch] text-[#9aa0c7]">{bio}</p>
+            <p className="profile-enter profile-display mb-4 text-[1.4rem] font-medium text-[#8b9bff]">{role}</p>
+            <p className="profile-enter mb-8 max-w-[54ch] text-[#9aa0c7]">{bio}</p>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="profile-enter flex flex-wrap gap-3" style={{ animationDelay: "300ms" }}>
               <a
                 href={resumeUrl}
                 className="inline-flex items-center rounded-[10px] border border-[#8b9bff] bg-[#8b9bff] px-5 py-3 text-sm font-medium text-[#0e1124] transition-colors hover:border-white hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[#8b9bff]"
@@ -142,17 +159,17 @@ export default function Profile() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[14px] border border-[#272c4f] bg-[#161a33] shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]">
+          <div className="profile-enter overflow-hidden rounded-[14px] border border-[#272c4f] bg-[#161a33] shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]" style={{ animationDelay: "240ms" }}>
             <div className="flex items-center gap-[7px] border-b border-[#272c4f] px-4 py-3">
               <span className="h-[11px] w-[11px] rounded-full bg-[#272c4f]" />
               <span className="h-[11px] w-[11px] rounded-full bg-[#272c4f]" />
               <span className="h-[11px] w-[11px] rounded-full bg-[#272c4f]" />
-              <em className="ml-3 not-italic text-xs text-[#9aa0c7]">profile.js</em>
+              <em className="profile-mono ml-3 not-italic text-xs text-[#9aa0c7]">profile.js</em>
             </div>
 
             <pre
               aria-hidden="true"
-              className="m-0 overflow-x-auto whitespace-pre px-5 py-[22px] font-mono text-[13.5px] leading-[1.9]"
+              className="profile-mono m-0 overflow-x-auto whitespace-pre px-5 py-[22px] text-[13.5px] leading-[1.9]"
               style={{ minHeight: `calc(${lineCount} * 1.9em + 44px)` }}
             >
               {tokens.map((tk, i) => {
@@ -171,30 +188,30 @@ export default function Profile() {
         </div>
       </section>
 
-      <section className="border-y border-[#272c4f] bg-[#161a33]">
+      <section className="profile-enter border-y border-[#272c4f] bg-[#161a33]">
         <div className="mx-auto grid max-w-[1120px] grid-cols-2 px-6 md:grid-cols-4">
           {stats.map((stat, index) => (
             <div
               key={stat.label}
-              className={`py-6 md:px-6 ${index % 2 === 1 ? "border-l border-[#272c4f] pl-6 md:border-l" : "md:border-l md:border-[#272c4f]"} ${index >= 2 ? "border-t border-[#272c4f] md:border-t-0" : ""} ${index === 0 ? "md:pl-0" : ""}`}
+              className={`profile-enter py-6 md:px-6 ${index % 2 === 1 ? "border-l border-[#272c4f] pl-6 md:border-l" : "md:border-l md:border-[#272c4f]"} ${index >= 2 ? "border-t border-[#272c4f] md:border-t-0" : ""} ${index === 0 ? "md:pl-0" : ""}`}
             >
-              <p className="mb-1.5 font-mono text-xs text-[#9aa0c7]">{stat.label.toLowerCase()}</p>
-              <p className="text-[1.15rem] font-bold">{stat.value}</p>
+              <p className="profile-mono mb-1.5 text-xs text-[#9aa0c7]">{stat.label.toLowerCase()}</p>
+              <p className="profile-display text-[1.15rem] font-bold">{stat.value}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="pb-24 pt-20">
+      <section className="profile-enter pb-24 pt-20">
         <div className="mx-auto max-w-[1120px] px-6">
-          <h2 className="mb-8 text-3xl font-bold tracking-[-0.02em]">Background</h2>
+          <h2 className="profile-display mb-8 text-3xl font-bold tracking-[-0.02em]">Background</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {now.map((item) => (
               <article
                 key={item.title}
                 className="rounded-xl border border-[#272c4f] border-l-[3px] border-l-[#ffb86b] bg-[#161a33] p-6"
               >
-                <h3 className="mb-2 text-[1.15rem] font-semibold">{item.title}</h3>
+                <h3 className="profile-display mb-2 text-[1.15rem] font-semibold">{item.title}</h3>
                 <p className="text-[15px] text-[#9aa0c7]">{item.body}</p>
               </article>
             ))}
