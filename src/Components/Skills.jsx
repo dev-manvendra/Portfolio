@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-// Edit these groups. "level" is 1-4 and drives how many segments fill.
 const SKILLS_DATA = [
   {
     category: "Languages",
@@ -40,7 +39,6 @@ const SKILLS_DATA = [
   },
 ];
 
-// One accent per group, cycled by index.
 const GROUP_COLORS = [
   { solid: "#8b9bff", soft: "rgba(139,155,255,.14)", fg: "#8b9bff" },
   { solid: "#6ee7c8", soft: "rgba(110,231,200,.14)", fg: "#6ee7c8" },
@@ -48,47 +46,30 @@ const GROUP_COLORS = [
   { solid: "#c4a8ff", soft: "rgba(196,168,255,.14)", fg: "#c4a8ff" },
 ];
 
-const CSS = `
+// Keep the original fonts and custom animations; layout and component styling use Tailwind.
+const ORIGINAL_DETAILS_CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap');
 
-.sk{--bg:#0e1124;--panel:#161a33;--edge:#272c4f;--text:#e9ebfa;--dim:#9aa0c7;--mint:#6ee7c8;
-  background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6}
-.sk *{box-sizing:border-box}
-.sk-wrap{max-width:1120px;margin:0 auto;padding:72px 24px 96px}
-.sk-tag{display:inline-flex;align-items:center;gap:10px;font:400 13px 'JetBrains Mono',monospace;color:var(--mint);
-  border:1px solid var(--edge);border-radius:999px;padding:6px 14px;margin:0 0 24px}
-.sk-dot{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:sk-pulse 2s ease-in-out infinite}
-.sk h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(2.5rem,6vw,4rem);line-height:1;letter-spacing:-.03em;margin:0 0 16px}
-.sk-lead{color:var(--dim);max-width:58ch;margin:0 0 40px}
-.sk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.sk-card{background:var(--panel);border:1px solid var(--edge);border-radius:14px;padding:24px 26px;border-top:3px solid var(--c)}
-.sk-head{display:flex;align-items:center;gap:14px;padding-bottom:16px;margin-bottom:6px;border-bottom:1px solid var(--edge)}
-.sk-mono{display:flex;flex:none;align-items:center;justify-content:center;width:42px;height:42px;border-radius:11px;
-  font:800 1.15rem 'Bricolage Grotesque',sans-serif;background:var(--soft);color:var(--c)}
-.sk h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:-.01em;margin:0}
-.sk-list{list-style:none;margin:0;padding:0}
-.sk-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 0}
-.sk-name{font-size:15px}
-.sk-bar{display:flex;gap:4px;flex:none}
-.sk-seg{width:20px;height:6px;border-radius:3px;background:var(--edge);transition:background .4s ease-out}
-.sk-seg.on{background:var(--c)}
-.sk-in{animation:sk-in .7s cubic-bezier(.2,.7,.2,1) both}
-@keyframes sk-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes sk-pulse{50%{opacity:.35}}
-@media (max-width:760px){
-  .sk-wrap{padding:48px 20px 64px}
-  .sk-grid{grid-template-columns:1fr}
-}
-@media (prefers-reduced-motion:reduce){.sk *{animation:none!important;transition:none!important}}
+.profile-skills { font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; }
+.profile-display { font-family: 'Bricolage Grotesque', sans-serif; }
+.profile-mono { font-family: 'JetBrains Mono', monospace; }
+.skills-in { animation: skills-in .7s cubic-bezier(.2,.7,.2,1) both; }
+.skills-pulse { animation: skills-pulse 2s ease-in-out infinite; }
+@keyframes skills-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes skills-pulse { 50% { opacity: .35; } }
+.profile-skills :focus-visible { outline: 2px solid #8b9bff; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .profile-skills * { animation: none !important; transition: none !important; } }
 `;
 
 function LevelBar({ level, mounted }) {
   return (
-    <div className="sk-bar" role="img" aria-label={`Level ${level} of 4`}>
+    <div className="flex shrink-0 gap-1" role="img" aria-label={`Level ${level} of 4`}>
       {[1, 2, 3, 4].map((n) => (
         <span
           key={n}
-          className={`sk-seg${mounted && n <= level ? " on" : ""}`}
+          className={`h-1.5 w-5 rounded-[3px] transition-colors duration-[400ms] ease-out ${
+            mounted && n <= level ? "bg-[var(--skill-color)]" : "bg-[#272c4f]"
+          }`}
           style={{ transitionDelay: `${n * 90}ms` }}
         />
       ))}
@@ -96,10 +77,6 @@ function LevelBar({ level, mounted }) {
   );
 }
 
-/**
- * Route component — renders page content only, so it can sit between your
- * Header and Footer.
- */
 export default function Skills() {
   const [mounted, setMounted] = useState(false);
 
@@ -109,41 +86,50 @@ export default function Skills() {
   }, []);
 
   return (
-    <div className="sk">
-      <style>{CSS}</style>
+    <div className="profile-skills min-h-screen bg-[#0e1124] text-[#e9ebfa]">
+      <style>{ORIGINAL_DETAILS_CSS}</style>
 
-      <section className="sk-wrap">
-        <p className="sk-tag sk-in">
-          <span className="sk-dot" />
+      <section className="mx-auto max-w-[1120px] px-5 py-12 pb-16 sm:px-6 sm:py-[72px] sm:pb-24">
+        <p className="skills-in mb-6 inline-flex items-center gap-2.5 rounded-full border border-[#272c4f] px-3.5 py-1.5 text-[13px] text-[#6ee7c8] profile-mono">
+          <span className="skills-pulse h-2 w-2 rounded-full bg-[#6ee7c8]" />
           Toolkit
         </p>
-        <h1 className="sk-in" style={{ animationDelay: "80ms" }}>
+
+        <h1
+          className="skills-in mb-4 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-none tracking-[-0.03em] profile-display"
+          style={{ animationDelay: "80ms" }}
+        >
           Skills
         </h1>
-        <p className="sk-lead sk-in" style={{ animationDelay: "160ms" }}>
+
+        <p className="skills-in mb-10 max-w-[58ch] text-[#9aa0c7]" style={{ animationDelay: "160ms" }}>
           Grouped by where I use them day to day. Bars are a rough sense of how much production or
           project time I've put in, not a certification.
         </p>
 
-        <div className="sk-grid">
+        <div className="grid grid-cols-1 gap-5 min-[761px]:grid-cols-2">
           {SKILLS_DATA.map((group, gi) => {
             const c = GROUP_COLORS[gi % GROUP_COLORS.length];
             return (
               <div
                 key={group.category}
-                className="sk-card"
-                style={{ "--c": c.solid, "--soft": c.soft }}
+                className="rounded-[14px] border border-[#272c4f] border-t-[3px] bg-[#161a33] px-[26px] py-6"
+                style={{ borderTopColor: c.solid, "--skill-color": c.solid, "--skill-soft": c.soft }}
               >
-                <div className="sk-head">
-                  <div className="sk-mono" aria-hidden="true">
+                <div className="mb-1 flex items-center gap-3.5 border-b border-[#272c4f] pb-4">
+                  <div
+                    className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-[11px] text-[1.15rem] font-extrabold profile-display"
+                    style={{ background: "var(--skill-soft)", color: c.fg }}
+                    aria-hidden="true"
+                  >
                     {group.category.charAt(0)}
                   </div>
-                  <h2>{group.category}</h2>
+                  <h2 className="m-0 text-[1.2rem] font-bold tracking-[-0.01em] profile-display">{group.category}</h2>
                 </div>
-                <ul className="sk-list">
+                <ul className="m-0 list-none p-0">
                   {group.skills.map((skill) => (
-                    <li key={skill.name} className="sk-row">
-                      <span className="sk-name">{skill.name}</span>
+                    <li key={skill.name} className="flex items-center justify-between gap-4 py-[11px]">
+                      <span className="text-[15px]">{skill.name}</span>
                       <LevelBar level={skill.level} mounted={mounted} />
                     </li>
                   ))}
