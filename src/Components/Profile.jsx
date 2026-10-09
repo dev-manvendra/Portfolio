@@ -107,7 +107,6 @@ export default function Profile() {
   const { eyebrow, nameLine1, nameLine2, role, bio, resumeUrl, email, socials, stats, now } =
     PROFILE_DATA;
 
-  // The profile.js window "types" itself out once on load.
   const tokens = useMemo(
     () => [
       { t: "const", c: "k" },
