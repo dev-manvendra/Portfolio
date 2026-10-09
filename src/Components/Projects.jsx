@@ -5,10 +5,10 @@ import { useMemo, useState } from "react";
 const PROJECTS_DATA = [
   {
     category: "Web app",
-    title: "Project One",
+    title: "StreaTube",
     description:
-      "A longer description for your best or most recent project — what it does, the specific problem it solves, and any scale or usage worth mentioning. This one gets the featured slot.",
-    stack: ["React", "Node.js", "PostgreSQL"],
+      "A video streaming platform where user post and watch vidoes.",
+    stack: ["React", "Node.js", "MongoDB, Express.js"],
     code: "https://github.com/yourhandle/project-one",
     demo: "https://project-one.example.com",
   },
