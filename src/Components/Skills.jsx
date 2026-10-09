@@ -31,8 +31,8 @@ const SKILLS_DATA = [
   {
     category: "Tools & practice",
     skills: [
+      { name: "Github", level: 4 },
       { name: "Git", level: 4 },
-      { name: "Testing (Jest/PyTest)", level: 3 },
       { name: "CI/CD", level: 2 },
       { name: "Linux", level: 3 },
     ],
