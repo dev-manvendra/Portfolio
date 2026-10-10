@@ -14,8 +14,8 @@ const PROJECTS_DATA = [
     title: "Password-Generator",
     description: "This is clean and responsive react app to generate password",
     stack: ["React","TailwindCSS"],
-    code: "https://github.com/yourhandle/project-two",
-    demo: null,
+    code: "https://github.com/dev-manvendra/Password-Generator",
+    demo: "https://password-generator-one-lemon-11.vercel.app/",
   }
 
 ];
