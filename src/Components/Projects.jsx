@@ -24,15 +24,8 @@ const PROJECTS_DATA = [
     stack: ["Python", "PostgreSQL"],
     code: "https://github.com/yourhandle/project-three",
     demo: "https://project-three.example.com",
-  },
-  {
-    category: "Mobile",
-    title: "Project Four",
-    description: "One or two sentences on what it does and the specific problem it solves.",
-    stack: ["React Native"],
-    code: "https://github.com/yourhandle/project-four",
-    demo: null,
-  },
+  }
+
 ];
 
 const MONOGRAMS = [
