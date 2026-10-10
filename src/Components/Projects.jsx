@@ -16,14 +16,6 @@ const PROJECTS_DATA = [
     stack: ["React","TailwindCSS"],
     code: "https://github.com/yourhandle/project-two",
     demo: null,
-  },
-  {
-    category: "API / service",
-    title: "Project Three",
-    description: "One or two sentences on what it does and the specific problem it solves.",
-    stack: ["Python", "PostgreSQL"],
-    code: "https://github.com/yourhandle/project-three",
-    demo: "https://project-three.example.com",
   }
 
 ];
