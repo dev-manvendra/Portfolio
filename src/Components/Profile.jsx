@@ -80,18 +80,16 @@ export default function Profile() {
     () => tokens.reduce((n, tk) => n + (tk.t.match(/\n/g) || []).length, 1),
     [tokens]
   );
-  const [count, setCount] = useState(0);
   const [reduced] = useState(
     () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
+  const [count, setCount] = useState(() => (reduced ? total : 0));
 
   useEffect(() => {
     if (reduced) {
-      setCount(total);
       return;
     }
 
-    setCount(0);
     let timer;
     const start = setTimeout(() => {
       timer = setInterval(() => {
