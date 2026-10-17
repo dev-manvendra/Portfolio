@@ -6,6 +6,7 @@ import App from './App.jsx'
 import Profile from './Components/Profile.jsx'
 import Projects from "./Components/Projects.jsx"
 import Skills from './Components/Skills.jsx'
+import ErrorComponent from "./assets/Error.jsx"
 // import Nav from './Components/Nav.jsx'
 
 
@@ -19,13 +20,18 @@ const router  = createBrowserRouter([
         element: <Profile />
       },{
         path : "projects",
-        element: <Projects />
+        element: <Projects />,
       },{
         path: "skills",
         element: <Skills />
-      }
-    ]
-  }
+      },
+      
+    ]},
+    {
+        path: "in-progress",
+        element : <ErrorComponent />
+    }
+  
 ])
 
 
