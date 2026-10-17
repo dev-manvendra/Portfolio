@@ -20,8 +20,8 @@ const buildDeck = () =>
 
 function WorkInProgress({ title = 'This module', progress = 37, onBack }) {
     const [deck, setDeck] = useState(buildDeck);
-    const [flipped, setFlipped] = useState([]); // indexes currently face-up (max 2)
-    const [matched, setMatched] = useState([]); // indexes matched
+    const [flipped, setFlipped] = useState([]); 
+    const [matched, setMatched] = useState([]); 
     const [moves, setMoves] = useState(0);
     const [statusIdx, setStatusIdx] = useState(0);
 
@@ -41,7 +41,7 @@ function WorkInProgress({ title = 'This module', progress = 37, onBack }) {
         return () => clearInterval(t);
     }, []);
 
-    // Compare two flipped cards
+
     useEffect(() => {
         if (flipped.length !== 2) return;
         const [a, b] = flipped;
