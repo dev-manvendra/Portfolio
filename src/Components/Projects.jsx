@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 
 const PROJECTS_DATA = [
   {
@@ -7,7 +8,7 @@ const PROJECTS_DATA = [
     description: "A video streaming platform where user post and watch vidoes.",
     stack: ["React", "Node.js", "MongoDB, Express.js"],
     code: "https://github.com/yourhandle/project-one",
-    demo: "https://project-one.example.com",
+    demo: "in-progress",
   },
   {
     category: "Web app",
@@ -84,11 +85,20 @@ function Links({ project }) {
       >
         View code
       </a>
-      {project.demo && (
+      {(project.demo && (project.demo.startsWith("https://")))? (
         <a href={project.demo} target="_blank" rel="noopener noreferrer" className={base}>
           Live demo
+        </a>):(
+        <a
+          href="/in-progress"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={base}
+        >
+          Live demo
         </a>
-      )}
+        )
+      }
     </div>
   );
 }
