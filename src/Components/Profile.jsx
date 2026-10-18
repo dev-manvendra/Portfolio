@@ -7,7 +7,7 @@ const PROFILE_DATA = {
   role: "Backend-leaning full-stack developer",
   bio:
     "I build things end to end — from data models and APIs to the interfaces on top of them. Currently in my third year, spending most nights on side projects and open-source issues rather than problem sets.",
-  resumeUrl: "/Resume.docx",
+  resumeUrl: "/Resume.pdf",
   email: "manvendrajhansi1406@gmail.com",
   socials: [
     { label: "GitHub", url: "https://github.com/dev-manvendra" },
@@ -133,9 +133,11 @@ export default function Profile() {
             <div className="profile-enter flex flex-wrap gap-3" style={{ animationDelay: "300ms" }}>
               <a
                 href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center rounded-[10px] border border-[#8b9bff] bg-[#8b9bff] px-5 py-3 text-sm font-medium text-[#0e1124] transition-colors hover:border-white hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[#8b9bff]"
               >
-                Download resume
+                View resume
               </a>
               <a
                 href={`mailto:${email}`}
