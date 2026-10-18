@@ -9,7 +9,7 @@ A personal portfolio website with a code-themed profile, filterable project show
 
 | | |
 |---|---|
-| **Live site** | https://portfolio-ecru-two-jz4it2ypky.vercel.app/projects |
+| **Live site** | https://portfolio-ecru-two-jz4it2ypky.vercel.app |
 | **Repository** | https://github.com/dev-manvendra/Portfolio |
 | **Resume** | [`public/Resume.pdf`](public/Resume.pdf) |
 
