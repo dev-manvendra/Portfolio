@@ -23,12 +23,12 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-[#131947] bg-[rgba(7,12,35,0.92)] backdrop-blur-xl portfolio-header">
       <style>{ORIGINAL_DETAILS_CSS}</style>
 
-      <div className="mx-auto flex max-w-[1120px] items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-4">
+      <div className="mx-auto flex max-w-280 items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-4">
         <Link
           to="/"
-          className="portfolio-display inline-flex shrink-0 items-center gap-2.5 text-[1.1rem] font-extrabold tracking-[-0.02em] text-[#ffb86b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[#8b9bff]"
+          className="portfolio-display inline-flex shrink-0 items-center gap-2.5 text-[1.1rem] font-extrabold tracking-[-0.02em] text-[#ffb86b] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[#8b9bff]"
         >
-          <span aria-hidden="true" className="h-[9px] w-[9px] rounded-full bg-[#6ee7c8]" />
+          <span aria-hidden="true" className="h-2.25 w-2.25 rounded-full bg-[#6ee7c8]" />
           {BRAND}
         </Link>
 
@@ -40,7 +40,7 @@ export default function Header() {
                   to={link.to}
                   end={link.end}
                   className={({ isActive }) =>
-                    `inline-flex rounded-full border border-transparent px-[11px] py-[7px] text-[13px] font-medium transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[#8b9bff] motion-reduce:transition-none sm:px-3.5 sm:py-2 sm:text-sm ${
+                    `inline-flex rounded-full border border-transparent px-2.75 py-1.75 text-[13px] font-medium transition-colors duration-200  focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[#8b9bff] motion-reduce:transition-none sm:px-3.5 sm:py-2 sm:text-sm ${
                       isActive
                         ? "bg-[#8b9bff] text-[#161a33]"
                         : "text-[#9aa0c7] hover:bg-[rgba(139,155,255,0.08)] hover:text-[#e9ebfa]"
