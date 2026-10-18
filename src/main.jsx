@@ -6,11 +6,11 @@ import App from './App.jsx'
 import Profile from './Components/Profile.jsx'
 import Projects from "./Components/Projects.jsx"
 import Skills from './Components/Skills.jsx'
-import ErrorComponent from "./assets/Error.jsx"
+import ErrorComponent from "./Components/Error.jsx"
 // import Nav from './Components/Nav.jsx'
 
 
-const router  = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
@@ -18,20 +18,25 @@ const router  = createBrowserRouter([
       {
         path: "",
         element: <Profile />
-      },{
-        path : "projects",
+      },
+      {
+        path: "projects",
         element: <Projects />,
-      },{
+      },
+      {
         path: "skills",
         element: <Skills />
       },
-      
-    ]},
-    {
-        path: "in-progress",
-        element : <ErrorComponent />
-    }
-  
+      {
+        path: "*",
+        element: <ErrorComponent />
+      },
+    ],
+  },
+  {
+    path: "in-progress",
+    element: <ErrorComponent />
+  }
 ])
 
 
