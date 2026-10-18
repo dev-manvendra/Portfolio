@@ -6,11 +6,10 @@ A personal portfolio website with a code-themed profile, filterable project show
 
 ## Links
 
-> Replace the `YOUR_LINK_HERE` placeholders below with your actual URLs.
 
 | | |
 |---|---|
-| **Live site** | `YOUR_LINK_HERE` |
+| **Live site** | https://portfolio-ecru-two-jz4it2ypky.vercel.app/projects |
 | **Repository** | https://github.com/dev-manvendra/Portfolio |
 | **Resume** | [`public/Resume.pdf`](public/Resume.pdf) |
 
